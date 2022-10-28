@@ -1,4 +1,4 @@
-package com.project;
+package com.project.pulsar;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
