@@ -1,6 +1,7 @@
 package com.project.pulsar.controller;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -16,6 +17,11 @@ public class PulsarController {
 
 	@POST
 	public Response save(PulsarDto pulsarDto) {
+		return Response.ok(pulsarDto).build();
+	}
+	
+	@GET
+	public Response listAll() {
 		return Response.ok().build();
 	}
 }

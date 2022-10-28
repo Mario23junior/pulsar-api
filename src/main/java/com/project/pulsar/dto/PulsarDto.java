@@ -7,7 +7,7 @@ public class PulsarDto {
 	private String imgSimulacao;
 	private String nomeConstelacao;
 	private String ascReta;
-	private String distancia;
+	private Double distancia;
 
 	public PulsarDto() {
 		// TODO Auto-generated constructor stub
@@ -53,11 +53,11 @@ public class PulsarDto {
 		this.ascReta = ascReta;
 	}
 
-	public String getDistancia() {
+	public Double getDistancia() {
 		return distancia;
 	}
 
-	public void setDistancia(String distancia) {
+	public void setDistancia(Double distancia) {
 		this.distancia = distancia;
 	}
 
