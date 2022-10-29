@@ -49,7 +49,23 @@ public class PulsarService {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 	}
-
+	
+	
+	public Response updateBase(Long id, PulsarDto pulsarDto) {
+		
+		Pulsar pulsar = repository.findById(id);
+		
+		if(pulsar != null) {
+			pulsar.setNome(pulsarDto.getNome());
+			pulsar.setImgSimulacao(pulsarDto.getImgSimulacao());
+			pulsar.setNomeConstelacao(pulsarDto.getNomeConstelacao());
+			pulsar.setDistancia(pulsarDto.getDistancia());
+			pulsar.setAscReta(pulsarDto.getAscReta());
+ 			return Response.ok().build();
+		} else {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}	
+	}
 }
 
 
