@@ -3,6 +3,7 @@ package com.project.pulsar.service;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.validation.Validation;
 import javax.ws.rs.core.Response;
 
 import com.project.pulsar.dto.PulsarDto;
@@ -15,14 +16,20 @@ import io.quarkus.hibernate.orm.panache.PanacheQuery;
 public class PulsarService {
 
 	private PulsarRepository repository;
+	private Validation validator;
 
 	@Inject
-	public PulsarService(PulsarRepository repository) {
+	public PulsarService(PulsarRepository repository, Validation validator) {
 		this.repository = repository;
+		this.validator = validator;
+
 	}
 
 	@Transactional
 	public Response save(PulsarDto pulsarDto) {
+
+//		Set<ConstraintViolation<PulsarDto>> valid = validator.
+
 		Pulsar p = new Pulsar();
 		p.setNome(pulsarDto.getNome());
 		p.setImgSimulacao(pulsarDto.getImgSimulacao());

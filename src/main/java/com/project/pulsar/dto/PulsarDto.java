@@ -1,10 +1,18 @@
 package com.project.pulsar.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class PulsarDto {
 
 	private Long id;
+	
+	@NotBlank(message = "Nome do pulsar e o obrigatorio")
 	private String nome;
+	
+	@NotBlank
 	private String imgSimulacao;
+	
+	@NotBlank
 	private String nomeConstelacao;
 	private String ascReta;
 	private Double distancia;
