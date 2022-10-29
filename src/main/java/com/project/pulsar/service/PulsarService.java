@@ -38,5 +38,35 @@ public class PulsarService {
 		PanacheQuery<Pulsar> listAll = repository.findAll();
 		return Response.ok(listAll.list()).build();
 	}
+	
+	public Response delete(Long id) {
+		Pulsar pulsar = repository.findById(id);
+		
+		if(pulsar != null) {
+		   repository.delete(pulsar);
+		   return Response.ok().build();
+		}else {
+			return Response.status(Response.Status.NOT_FOUND).build();
+		}
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
