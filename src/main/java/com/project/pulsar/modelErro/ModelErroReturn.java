@@ -1,17 +1,17 @@
 package com.project.pulsar.modelErro;
 
-public class modelErroReturn {
+public class ModelErroReturn {
 
 	private String field;
 	private String message;
 
-	public modelErroReturn(String field, String message) {
+	public ModelErroReturn(String field, String message) {
 		super();
 		this.field = field;
 		this.message = message;
 	}
 
-	public modelErroReturn() {
+	public ModelErroReturn() {
 		// TODO Auto-generated constructor stub
 	}
 

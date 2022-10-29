@@ -12,19 +12,19 @@ public class ResponseErro {
 
 	private static final Integer UNPROCESSABLE_ENTITY_STATUS = 224;
 	private String message;
-	private Collection<modelErroReturn> errors;
+	private Collection<ModelErroReturn> errors;
 
-	public ResponseErro(String message, Collection<modelErroReturn> errors) {
+	public ResponseErro(String message, Collection<ModelErroReturn> errors) {
 		super();
 		this.message = message;
 		this.errors = errors;
 	}
 
 	public static <T>ResponseErro createFromValidation(Set<ConstraintViolation<T>> violations) {
-		List<modelErroReturn> erroReturn = violations.stream()
-				.map(cons -> new modelErroReturn(cons.getPropertyPath()
+		List<ModelErroReturn> erroReturn = violations.stream()
+				.map(cons -> new ModelErroReturn(cons.getPropertyPath()
 						.toString(),cons
-						.getMessage()) )
+						.getMessage()))
 				        .collect(Collectors.toList());
 		
 		String message = "Erro de validação por favor, preencha todos os campos marcados como obrigatórios";
@@ -46,11 +46,11 @@ public class ResponseErro {
 		this.message = message;
 	}
 
-	public Collection<modelErroReturn> getErrors() {
+	public Collection<ModelErroReturn> getErrors() {
 		return errors;
 	}
 
-	public void setErrors(Collection<modelErroReturn> errors) {
+	public void setErrors(Collection<ModelErroReturn> errors) {
 		this.errors = errors;
 	}
 	
