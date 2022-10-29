@@ -1,5 +1,6 @@
 package com.project.pulsar.controller;
 
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -10,32 +11,29 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.project.pulsar.dto.PulsarDto;
-import com.project.pulsar.model.Pulsar;
-
-import io.quarkus.hibernate.orm.panache.PanacheQuery;
+import com.project.pulsar.service.PulsarService;
 
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/v1/project/pulsar/")
 public class PulsarController {
-
+    
+	@Inject
+	private PulsarService service;
+	
+	public PulsarController( PulsarService service) {
+		this.service = service;
+	}
+ 
 	@POST
 	@Transactional
 	public Response save(PulsarDto pulsarDto) {
-		Pulsar p = new Pulsar();
-		p.setNome(pulsarDto.getNome());
-		p.setImgSimulacao(pulsarDto.getImgSimulacao());
-		p.setNomeConstelacao(pulsarDto.getNomeConstelacao());
-		p.setDistancia(pulsarDto.getDistancia());
-		p.setAscReta(pulsarDto.getAscReta());
-		p.persist();
-		return Response.ok(p).build();
-	
- 	}
-	
+		return service.save(pulsarDto);
+
+	}
+
 	@GET
 	public Response listAll() {
-		PanacheQuery<Pulsar> listAll = Pulsar.findAll();
-		return Response.ok(listAll.list()).build();
+		return service.findAllDate();
 	}
 }

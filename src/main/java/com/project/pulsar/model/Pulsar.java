@@ -7,11 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-
 @Entity
 @Table(name = "PULSAR")
-public class Pulsar extends PanacheEntityBase {
+public class Pulsar  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
