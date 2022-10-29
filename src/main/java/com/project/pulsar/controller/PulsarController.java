@@ -12,6 +12,8 @@ import javax.ws.rs.core.Response;
 import com.project.pulsar.dto.PulsarDto;
 import com.project.pulsar.model.Pulsar;
 
+import io.quarkus.hibernate.orm.panache.PanacheQuery;
+
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/v1/project/pulsar/")
@@ -33,6 +35,7 @@ public class PulsarController {
 	
 	@GET
 	public Response listAll() {
-		return Response.ok().build();
+		PanacheQuery<Pulsar> listAll = Pulsar.findAll();
+		return Response.ok(listAll.list()).build();
 	}
 }
