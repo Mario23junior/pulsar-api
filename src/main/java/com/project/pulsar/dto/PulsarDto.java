@@ -10,6 +10,7 @@ public class PulsarDto {
 	@NotBlank(message = "Nome do pulsar e o obrigatorio")
 	private String nome;
 	
+	@NotBlank(message = "Por favor insira uma imagen representativa")
  	private String imgSimulacao;
 	
 	@NotBlank(message = "por favor insira o nome da costelação proxima")

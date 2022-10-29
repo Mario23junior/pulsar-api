@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
  
 import com.project.pulsar.dto.PulsarDto;
 import com.project.pulsar.model.Pulsar;
+import com.project.pulsar.modelErro.ResponseErro;
 import com.project.pulsar.repository.PulsarRepository;
 
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
@@ -36,9 +37,8 @@ public class PulsarService {
 
 		Set<ConstraintViolation<PulsarDto>> valid = validator.validate(pulsarDto);
 		if(!valid.isEmpty()) {
-			ConstraintViolation<PulsarDto> errorCaptur = valid.stream().findAny().get();
-			String erro = errorCaptur.getMessage();
-			return Response.status(Response.Status.BAD_REQUEST).entity(erro).build();
+			ResponseErro capturErro = ResponseErro.createFromValidation(valid);
+			return Response.status(Response.Status.BAD_REQUEST).entity(capturErro).build();
 		}
 		Pulsar p = new Pulsar();
 		p.setNome(pulsarDto.getNome());
