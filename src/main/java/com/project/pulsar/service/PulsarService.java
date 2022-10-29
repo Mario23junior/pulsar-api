@@ -37,8 +37,11 @@ public class PulsarService {
 
 		Set<ConstraintViolation<PulsarDto>> valid = validator.validate(pulsarDto);
 		if(!valid.isEmpty()) {
-			ResponseErro capturErro = ResponseErro.createFromValidation(valid);
-			return Response.status(Response.Status.BAD_REQUEST).entity(capturErro).build();
+			Response responseEntityErro = ResponseErro
+			.createFromValidation(valid)
+			.withStatusCode(ResponseErro.getUnprocessableEntityStatus());
+			return responseEntityErro;
+			 
 		}
 		Pulsar p = new Pulsar();
 		p.setNome(pulsarDto.getNome());
@@ -47,7 +50,10 @@ public class PulsarService {
 		p.setDistancia(pulsarDto.getDistancia());
 		p.setAscReta(pulsarDto.getAscReta());
 		repository.persist(p);
-		return Response.ok(p).build();
+		return Response
+				.status(Response.Status.CREATED)
+				.entity(pulsarDto)
+				.build();
 	}
 
 	public Response findAllDate() {
@@ -60,7 +66,7 @@ public class PulsarService {
 
 		if (pulsar != null) {
 			repository.delete(pulsar);
-			return Response.ok().build();
+			return Response.status(Response.Status.NO_CONTENT).build();
 		} else {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
@@ -75,7 +81,7 @@ public class PulsarService {
 			pulsar.setNomeConstelacao(pulsarDto.getNomeConstelacao());
 			pulsar.setDistancia(pulsarDto.getDistancia());
 			pulsar.setAscReta(pulsarDto.getAscReta());
-			return Response.ok().build();
+			return Response.status(Response.Status.NO_CONTENT).build();
 		} else {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
