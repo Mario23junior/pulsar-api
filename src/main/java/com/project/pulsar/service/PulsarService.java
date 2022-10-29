@@ -1,11 +1,15 @@
 package com.project.pulsar.service;
 
+import java.util.Set;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import javax.validation.Validation;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import javax.ws.rs.core.Response;
-
+ 
+ 
 import com.project.pulsar.dto.PulsarDto;
 import com.project.pulsar.model.Pulsar;
 import com.project.pulsar.repository.PulsarRepository;
@@ -16,10 +20,12 @@ import io.quarkus.hibernate.orm.panache.PanacheQuery;
 public class PulsarService {
 
 	private PulsarRepository repository;
-	private Validation validator;
+	
+	
+	private Validator validator;
 
 	@Inject
-	public PulsarService(PulsarRepository repository, Validation validator) {
+	public PulsarService(PulsarRepository repository, Validator validator) {
 		this.repository = repository;
 		this.validator = validator;
 
@@ -28,8 +34,12 @@ public class PulsarService {
 	@Transactional
 	public Response save(PulsarDto pulsarDto) {
 
-//		Set<ConstraintViolation<PulsarDto>> valid = validator.
-
+		Set<ConstraintViolation<PulsarDto>> valid = validator.validate(pulsarDto);
+		if(!valid.isEmpty()) {
+			ConstraintViolation<PulsarDto> errorCaptur = valid.stream().findAny().get();
+			String erro = errorCaptur.getMessage();
+			return Response.status(Response.Status.BAD_REQUEST).entity(erro).build();
+		}
 		Pulsar p = new Pulsar();
 		p.setNome(pulsarDto.getNome());
 		p.setImgSimulacao(pulsarDto.getImgSimulacao());
@@ -57,7 +67,6 @@ public class PulsarService {
 	}
 
 	public Response updateBase(Long id, PulsarDto pulsarDto) {
-
 		Pulsar pulsar = repository.findById(id);
 
 		if (pulsar != null) {
