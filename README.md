@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="logo.gif">
-    <img src="https://scx2.b-cdn.net/gfx/news/2018/pulsarinabox.gif" alt="Logo" width="700" height="300" style="border-radius: 50%"/>
+    <img src="logo/pulsar.gif" alt="Logo" width="700" height="300" style="border-radius: 50%"/>
   </a>
 
   
