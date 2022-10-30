@@ -11,7 +11,7 @@ import javax.validation.Validator;
 import javax.ws.rs.core.Response;
 
 import com.project.pulsar.dto.PulsarDto;
-import com.project.pulsar.mapperException.ExceptionsRepeatedValues​Return;
+import com.project.pulsar.mapperException.ExceptionsRepeatedValuesReturnz;
 import com.project.pulsar.model.Pulsar;
 import com.project.pulsar.modelErro.ResponseErro;
 import com.project.pulsar.repository.PulsarRepository;
@@ -39,7 +39,7 @@ public class PulsarService {
 	Optional<Pulsar> findNome = repository.findByNome(pulsarDto.getNome());
 	
 	if(findNome.isPresent()){
- 		 throw new ExceptionsRepeatedValues​Return("Pulsa "+ pulsarDto.getNome() +" já esta cadastrado, por favor revise os valores");		 
+ 		 throw new ExceptionsRepeatedValuesReturnz("Pulsa "+ pulsarDto.getNome() +" já esta cadastrado, por favor revise os valores");		 
 	 }
 		Set<ConstraintViolation<PulsarDto>> valid = validator.validate(pulsarDto);
 		if(!valid.isEmpty()) {

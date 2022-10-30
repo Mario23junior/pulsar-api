@@ -17,7 +17,7 @@ public class GenerateException implements ExceptionMapper<Exception> {
 
 		ModelErroReturn modelErroResponse = new ModelErroReturn();
 
-		if (e instanceof ExceptionsRepeatedValues​Return) {
+		if (e instanceof ExceptionsRepeatedValuesReturnz) {
 			modelErroResponse.setMessage(e.getMessage());
  			return Response.status(Response.Status.BAD_REQUEST).entity(modelErroResponse).build();
 		}
