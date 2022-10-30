@@ -1,60 +1,60 @@
-# pulsar Project
+#Projeto pulsar
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Este projeto usa Quarkus, o Supersonic Subatomic Java Framework.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+Se você quiser saber mais sobre o Quarkus, visite o site: https://quarkus.io/ .
 
-## Running the application in dev mode
+## Executando o aplicativo no modo dev
 
-You can run your application in dev mode that enables live coding using:
-```shell script
+Você pode executar seu aplicativo no modo dev que permite a codificação ao vivo usando:
+```script de shell
 ./mvnw compile quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+> **_NOTE:_** Quarkus agora vem com uma Dev UI, que está disponível no modo dev apenas em http://localhost:8080/q/dev/.
 
-## Packaging and running the application
+## Empacotando e executando o aplicativo
 
-The application can be packaged using:
-```shell script
+O aplicativo pode ser empacotado usando:
+```script de shell
 ./mvnw package
 ```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+Ele produz o arquivo `quarkus-run.jar` no diretório `target/quarkus-app/`.
+Esteja ciente de que não é um _über-jar_ pois as dependências são copiadas para o diretório `target/quarkus-app/lib/`.
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+O aplicativo agora pode ser executado usando `java -jar target/quarkus-app/quarkus-run.jar`.
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
+Se você deseja construir um _über-jar_, execute o seguinte comando:
+```script de shell
 ./mvnw package -Dquarkus.package.type=uber-jar
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+O aplicativo, empacotado como um _über-jar_, agora pode ser executado usando `java -jar target/*-runner.jar`.
 
-## Creating a native executable
+## Criando um executável nativo
 
-You can create a native executable using: 
-```shell script
+Você pode criar um executável nativo usando:
+```script de shell
 ./mvnw package -Pnative
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
+Ou, se você não tiver o GraalVM instalado, poderá executar a compilação executável nativa em um contêiner usando:
+```script de shell
+./mvnw pacote -Pnative -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./target/pulsar-1.0-runner`
+Você pode então executar seu executável nativo com: `./target/pulsar-1.0-runner`
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
+Se você quiser saber mais sobre como criar executáveis ​​nativos, consulte https://quarkus.io/guides/maven-tooling.
 
-## Related Guides
+## Guias relacionados
 
-- RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing JAX-RS and more
+- RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): estrutura de endpoint REST implementando JAX-RS e muito mais
 
-## Provided Code
+## Código fornecido
 
 ### RESTEasy JAX-RS
 
-Easily start your RESTful Web Services
+Inicie facilmente seus serviços Web RESTful
 
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+[Seção de guia relacionada...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
