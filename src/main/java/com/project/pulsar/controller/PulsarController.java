@@ -16,6 +16,8 @@ import javax.ws.rs.core.Response;
 import com.project.pulsar.dto.PulsarDto;
 import com.project.pulsar.service.PulsarService;
 
+import org.eclipse.microprofile.openapi.annotations.Operation;
+
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @Path("/v1/project/pulsar/")
@@ -28,6 +30,9 @@ public class PulsarController {
 		this.service = service;
 	}
  
+	@Operation(
+	summary = "Salvando pulsa",
+	description = "Salvando um novo pulsar no banco de dados.")
 	@POST
 	@Transactional
 	public Response save(PulsarDto pulsarDto) {
@@ -35,11 +40,17 @@ public class PulsarController {
 
 	}
 
+	@Operation(
+	summary = "Listando todos os pulsare.",
+	description = "Listando todos os pulsares registrados no banco de dados.")
 	@GET
 	public Response listAll() {
 		return service.findAllDate();
 	}
 	
+	@Operation(
+	summary = "Deletando pulsares por id",
+	description = "Deletando um pulsar registrados no banco de dados.")
 	@DELETE
 	@Path("{id}")
 	@Transactional
@@ -47,6 +58,9 @@ public class PulsarController {
 		return service.delete(id);
 	}
 	
+	@Operation(
+	summary = "Atualizando um pulsar",
+	description = "Atualizando pulsar registrados no banco de dados.")
 	@PUT
 	@Transactional
 	@Path("{id}")
