@@ -1,12 +1,25 @@
 package com.project.pulsar.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class PulsarDto {
 
 	private Long id;
+	
+	@NotBlank(message = "Nome do pulsar e o obrigatorio")
 	private String nome;
-	private String imgSimulacao;
+	
+	@NotBlank(message = "Por favor insira uma imagen representativa")
+ 	private String imgSimulacao;
+	
+	@NotBlank(message = "por favor insira o nome da costelação proxima")
 	private String nomeConstelacao;
+	
+	@NotBlank(message = "insira o valor da senção reta em reção a distancia da terra.")
 	private String ascReta;
+	
+	@NotNull(message = "Insira a disntancia estimada.")
 	private Double distancia;
 
 	public PulsarDto() {
