@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="logo.gif">
-    <img src="https://scitechdaily.com/images/Radio-Wave-Emission-From-Pulsar.gif" alt="Logo" width="700" height="300" style="border-radius: 50%"/>
+    <img src="https://scx2.b-cdn.net/gfx/news/2018/pulsarinabox.gif" alt="Logo" width="700" height="300" style="border-radius: 50%"/>
   </a>
 
   
