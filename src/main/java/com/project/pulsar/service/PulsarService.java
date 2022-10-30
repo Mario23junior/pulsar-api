@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-import javax.ws.rs.BadRequestException;
 import javax.ws.rs.core.Response;
 
 import com.project.pulsar.dto.PulsarDto;
