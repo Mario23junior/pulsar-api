@@ -11,7 +11,7 @@ import javax.validation.Validator;
 import javax.ws.rs.core.Response;
 
 import com.project.pulsar.dto.PulsarDto;
-import com.project.pulsar.mapperException.ExceptionsRepeatedValuesReturnz;
+import com.project.pulsar.mapperException.ExceptionsRepeatedValuesReturn;
 import com.project.pulsar.model.Pulsar;
 import com.project.pulsar.modelErro.ResponseErro;
 import com.project.pulsar.repository.PulsarRepository;
@@ -22,24 +22,20 @@ import io.quarkus.hibernate.orm.panache.PanacheQuery;
 public class PulsarService {
 
 	private PulsarRepository repository;
-	
-	
 	private Validator validator;
 
 	@Inject
 	public PulsarService(PulsarRepository repository, Validator validator) {
 		this.repository = repository;
 		this.validator = validator;
-
 	}
 
 	@Transactional
 	public Response save(PulsarDto pulsarDto) {
 
 	Optional<Pulsar> findNome = repository.findByNome(pulsarDto.getNome());
-	
 	if(findNome.isPresent()){
- 		 throw new ExceptionsRepeatedValuesReturnz("Pulsa "+ pulsarDto.getNome() +" já esta cadastrado, por favor revise os valores");		 
+ 		 throw new ExceptionsRepeatedValuesReturn("Pulsa "+ pulsarDto.getNome() +" já esta cadastrado, por favor revise os valores");		 
 	 }
 		Set<ConstraintViolation<PulsarDto>> valid = validator.validate(pulsarDto);
 		if(!valid.isEmpty()) {
@@ -47,7 +43,6 @@ public class PulsarService {
 			.createFromValidation(valid)
 			.withStatusCode(ResponseErro.getUnprocessableEntityStatus());
 			return responseEntityErro;
-			 
 		}
 		Pulsar p = new Pulsar();
 		p.setNome(pulsarDto.getNome());
@@ -74,7 +69,8 @@ public class PulsarService {
 			repository.delete(pulsar);
 			return Response.status(Response.Status.NO_CONTENT).build();
 		} else {
-			return Response.status(Response.Status.NOT_FOUND).build();
+			Response.status(Response.Status.NOT_FOUND).build();
+			throw new ExceptionsRepeatedValuesReturn("Pulsar de id : "+ id +" Não foi encontrado, por isso não há nada a ser deletado");		 
 		}
 	}
 
