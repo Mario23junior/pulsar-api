@@ -49,8 +49,7 @@ Ou baixe um ZIP de main [manualmente](https://github.com/Mario23junior/Galaxy-AP
 * Tenha o Maven instalado e disponível em seu PATH ou IDE
 * Tenha um iterador de APIs para testes HTTP ex: [Postman](https://www.postman.com/downloads/), [Insonia](https://insomnia.rest/download)
 
-###################################################################################################################################################
-
+ 
 Se você quiser saber mais sobre o Quarkus, visite o site: https://quarkus.io/ .
 
 ## Executando o aplicativo no modo dev
