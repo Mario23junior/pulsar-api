@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="logo.gif">
-    <img src="https://svs.gsfc.nasa.gov/vis/a010000/a013000/a013058/Pulsar_Loop_Electron_Glow.gif" alt="Logo" width="600" height="400" style="border-radius: 50%"/>
+    <img src="https://scitechdaily.com/images/Radio-Wave-Emission-From-Pulsar.gif" alt="Logo" width="700" height="300" style="border-radius: 50%"/>
   </a>
 
   
