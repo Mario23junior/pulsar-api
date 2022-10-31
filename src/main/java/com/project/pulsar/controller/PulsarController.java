@@ -37,7 +37,15 @@ public class PulsarController {
 	@Transactional
 	public Response save(PulsarDto pulsarDto) {
 		return service.save(pulsarDto);
-
+	}
+	
+	@Operation(
+	summary = "Listando pulsar por id",
+    description = "Obtendo pulsar por id de identificação")
+	@GET
+	@Path("{id}")
+ 	public Response findId(@PathParam("id") Long id) {
+		return service.findByIdPulsar(id);
 	}
 
 	@Operation(

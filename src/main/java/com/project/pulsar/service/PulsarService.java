@@ -61,10 +61,21 @@ public class PulsarService {
 		PanacheQuery<Pulsar> listAll = repository.findAll();
 		return Response.ok(listAll.list()).build();
 	}
+	
+	
+	public Response findByIdPulsar(Long id) {
+		Pulsar listId = repository.findById(id);
+		if(listId == null) {
+			Response.status(Response.Status.NO_CONTENT).build();
+			throw new ExceptionsRepeatedValuesReturn("Pulsar de id : "+ id +" Não foi encontrado.");
+ 		}
+		return Response.status(Response.Status.CREATED).entity(listId).build();
+
+ 	}
+		
 
 	public Response delete(Long id) {
 		Pulsar pulsar = repository.findById(id);
-
 		if (pulsar != null) {
 			repository.delete(pulsar);
 			return Response.status(Response.Status.NO_CONTENT).build();

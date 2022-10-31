@@ -9,6 +9,7 @@ import javax.ws.rs.ext.Provider;
 import com.project.pulsar.modelErro.ModelErroReturn;
 
 @Provider
+@Produces(MediaType.APPLICATION_JSON)
 public class GenerateException implements ExceptionMapper<Exception> {
 
 	@Override
