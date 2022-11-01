@@ -41,7 +41,8 @@ public class PulsarService {
 
 	Optional<Pulsar> findNome = repository.findByNome(pulsarDto.getNome());
 	if(findNome.isPresent()){
- 		 throw new ExceptionsRepeatedValuesReturn("Pulsa "+ pulsarDto.getNome() +" já esta cadastrado, por favor revise os valores");		 
+ 		 throw new ExceptionsRepeatedValuesReturn("Pulsa "+ 
+	pulsarDto.getNome() +" já esta cadastrado, por favor revise os valores");		 
 	 }
 		Set<ConstraintViolation<PulsarDto>> valid = validator.validate(pulsarDto);
 		if(!valid.isEmpty()) {
