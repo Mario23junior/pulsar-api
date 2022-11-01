@@ -50,13 +50,8 @@ public class PulsarService {
 			.withStatusCode(ResponseErro.getUnprocessableEntityStatus());
 			return responseEntityErro;
 		}
-		Pulsar p = new Pulsar();
-		p.setNome(pulsarDto.getNome());
-		p.setImgSimulacao(pulsarDto.getImgSimulacao());
-		p.setNomeConstelacao(pulsarDto.getNomeConstelacao());
-		p.setDistancia(pulsarDto.getDistancia());
-		p.setAscReta(pulsarDto.getAscReta());
-		repository.persist(p);
+		Pulsar pulsarBase = mapper.map(pulsarDto,Pulsar.class);
+		repository.persist(pulsarBase);
 		return Response
 				.status(Response.Status.CREATED)
 				.entity(pulsarDto)
@@ -74,7 +69,7 @@ public class PulsarService {
 	
 	public Response findByIdPulsar(Long id) {
 		PanacheQuery<Pulsar> listId = repository.find("id",id);
-		if(listId == null) {
+		if(listId.equals(null)) {
 			Response.status(Response.Status.NO_CONTENT).build();
 			throw new ExceptionsRepeatedValuesReturn("Pulsar de id : "+ id +" Não foi encontrado.");
  		}else {
