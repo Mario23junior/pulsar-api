@@ -1,5 +1,7 @@
 package com.project.pulsar.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
@@ -52,7 +54,7 @@ public class PulsarController {
 	summary = "Listando todos os pulsare.",
 	description = "Listando todos os pulsares registrados no banco de dados.")
 	@GET
-	public Response listAll() {
+	public List<PulsarDto> listAll() {
 		return service.findAllDate();
 	}
 	

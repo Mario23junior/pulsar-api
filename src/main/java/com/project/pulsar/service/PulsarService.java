@@ -1,7 +1,9 @@
 package com.project.pulsar.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -16,6 +18,8 @@ import com.project.pulsar.model.Pulsar;
 import com.project.pulsar.modelErro.ResponseErro;
 import com.project.pulsar.repository.PulsarRepository;
 
+import org.modelmapper.ModelMapper;
+
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 @ApplicationScoped
@@ -23,12 +27,14 @@ public class PulsarService {
 
 	private PulsarRepository repository;
 	private Validator validator;
+	private ModelMapper mapper;
 
 	@Inject
-	public PulsarService(PulsarRepository repository, Validator validator) {
+	public PulsarService(PulsarRepository repository, Validator validator,ModelMapper mapper) {
 		this.repository = repository;
 		this.validator = validator;
-	}
+		this.mapper = mapper;
+ 	}
 
 	@Transactional
 	public Response save(PulsarDto pulsarDto) {
@@ -57,9 +63,15 @@ public class PulsarService {
 				.build();
 	}
 
-	public Response findAllDate() {
+	public List<PulsarDto> findAllDate() {
 		PanacheQuery<Pulsar> listAll = repository.findAll();
-		return Response.ok(listAll.list()).build();
+		return listAll.stream()
+		.map(listDataConvert -> mapper.map(listDataConvert, PulsarDto.class))
+		.collect(Collectors.toList());
+		
+//		return Response.ok(listAll.list()).build();
+  //		PulsarDto listDto = mapper.map(listAll, PulsarDto.class);
+ //		return Response.ok(listDto.list()).build();
 	}
 	
 	
