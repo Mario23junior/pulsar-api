@@ -77,11 +77,12 @@ public class PulsarService {
 		if(listId == null) {
 			Response.status(Response.Status.NO_CONTENT).build();
 			throw new ExceptionsRepeatedValuesReturn("Pulsar de id : "+ id +" Não foi encontrado.");
+ 		}else {
+ 			List<PulsarDto> idDto = listId.stream()
+ 					.map(listDataConvert -> mapper.map(listDataConvert, PulsarDto.class))
+ 					.collect(Collectors.toList());
+ 			return Response.status(Response.Status.CREATED).entity(idDto).build();
  		}
-		List<PulsarDto> idDto = listId.stream()
-				.map(listDataConvert -> mapper.map(listDataConvert, PulsarDto.class))
-				.collect(Collectors.toList());
- 		return Response.status(Response.Status.CREATED).entity(idDto).build();
 
  	}
 		
