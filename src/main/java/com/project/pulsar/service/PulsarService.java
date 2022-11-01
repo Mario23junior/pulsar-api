@@ -63,25 +63,25 @@ public class PulsarService {
 				.build();
 	}
 
-	public List<PulsarDto> findAllDate() {
+	public Response findAllDate() {
 		PanacheQuery<Pulsar> listAll = repository.findAll();
-		return listAll.stream()
+		List<PulsarDto> listId = listAll.stream()
 		.map(listDataConvert -> mapper.map(listDataConvert, PulsarDto.class))
 		.collect(Collectors.toList());
-		
-//		return Response.ok(listAll.list()).build();
-  //		PulsarDto listDto = mapper.map(listAll, PulsarDto.class);
- //		return Response.ok(listDto.list()).build();
+		return Response.ok(listId).build();
 	}
 	
 	
 	public Response findByIdPulsar(Long id) {
-		Pulsar listId = repository.findById(id);
+		PanacheQuery<Pulsar> listId = repository.find("id",id);
 		if(listId == null) {
 			Response.status(Response.Status.NO_CONTENT).build();
 			throw new ExceptionsRepeatedValuesReturn("Pulsar de id : "+ id +" Não foi encontrado.");
  		}
-		return Response.status(Response.Status.CREATED).entity(listId).build();
+		List<PulsarDto> idDto = listId.stream()
+				.map(listDataConvert -> mapper.map(listDataConvert, PulsarDto.class))
+				.collect(Collectors.toList());
+ 		return Response.status(Response.Status.CREATED).entity(idDto).build();
 
  	}
 		
