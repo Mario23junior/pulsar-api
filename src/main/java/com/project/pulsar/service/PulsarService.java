@@ -30,7 +30,8 @@ public class PulsarService {
 	private ModelMapper mapper;
 
 	@Inject
-	public PulsarService(PulsarRepository repository, Validator validator,ModelMapper mapper) {
+	public PulsarService(PulsarRepository repository, 
+			Validator validator,ModelMapper mapper) {
 		this.repository = repository;
 		this.validator = validator;
 		this.mapper = mapper;
@@ -38,7 +39,6 @@ public class PulsarService {
 
 	@Transactional
 	public Response save(PulsarDto pulsarDto) {
-
 	Optional<Pulsar> findNome = repository.findByNome(pulsarDto.getNome());
 	if(findNome.isPresent()){
  		 throw new ExceptionsRepeatedValuesReturn("Pulsa "+ 
@@ -72,7 +72,8 @@ public class PulsarService {
 		PanacheQuery<Pulsar> listId = repository.find("id",id);
 		if(listId.equals(null)) {
 			Response.status(Response.Status.NO_CONTENT).build();
-			throw new ExceptionsRepeatedValuesReturn("Pulsar de id : "+ id +" Não foi encontrado.");
+			throw new ExceptionsRepeatedValuesReturn("Pulsar de id : "+ id
+					+" Não foi encontrado.");
  		}else {
  			List<PulsarDto> idDto = listId.stream()
  					.map(listDataConvert -> mapper.map(listDataConvert, PulsarDto.class))
@@ -90,7 +91,8 @@ public class PulsarService {
 			return Response.status(Response.Status.NO_CONTENT).build();
 		} else {
 			Response.status(Response.Status.NOT_FOUND).build();
-			throw new ExceptionsRepeatedValuesReturn("Pulsar de id : "+ id +" Não foi encontrado, por isso não há nada a ser deletado");		 
+			throw new ExceptionsRepeatedValuesReturn("Pulsar de id : "+ id
+					+" Não foi encontrado, por isso não há nada a ser deletado");		 
 		}
 	}
 
