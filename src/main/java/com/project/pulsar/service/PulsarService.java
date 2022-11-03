@@ -80,8 +80,21 @@ public class PulsarService {
  					.collect(Collectors.toList());
  			return Response.status(Response.Status.CREATED).entity(idDto).build();
  		}
-
  	}
+	
+	public Response findByName(String nome) {
+		PanacheQuery<Pulsar> listId = repository.find("nome",nome);
+		if(listId.equals(null)) {
+			Response.status(Response.Status.NO_CONTENT).build();
+			throw new ExceptionsRepeatedValuesReturn("O pulsar "+ nome
+					+" Não foi encontrado.");
+ 		}else {
+ 			List<PulsarDto> idDto = listId.stream()
+ 					.map(listDataConvert -> mapper.map(listDataConvert, PulsarDto.class))
+ 					.collect(Collectors.toList());
+ 			return Response.status(Response.Status.CREATED).entity(idDto).build();
+ 		}
+	}
 		
 
 	public Response delete(Long id) {

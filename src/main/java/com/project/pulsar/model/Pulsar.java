@@ -15,7 +15,6 @@ public class Pulsar  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	
 	@Column(length = 200)
 	private String imgSimulacao;
 	private String nomeConstelacao;
