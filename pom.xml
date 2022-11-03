@@ -43,6 +43,13 @@
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-hibernate-validator</artifactId>
 		</dependency>
+		<!-- 
+		<dependency>
+			<groupId>com.github.quarkus-extension</groupId>
+			<artifactId>ngrok</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		-->
 		<dependency>
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-hibernate-orm</artifactId>
