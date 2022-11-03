@@ -95,6 +95,21 @@ public class PulsarService {
  			return Response.status(Response.Status.CREATED).entity(idDto).build();
  		}
 	}
+	
+	
+	public Response findByConstelacao(String constelacao) {
+		PanacheQuery<Pulsar> listId = repository.find("nomeConstelacao",constelacao.toUpperCase().toLowerCase());
+		if(listId.equals(null)) {
+			Response.status(Response.Status.NO_CONTENT).build();
+			throw new ExceptionsRepeatedValuesReturn("O pulsar "+ constelacao
+					+" Não foi encontrado.");
+ 		}else {
+ 			List<PulsarDto> idDto = listId.stream()
+ 					.map(listDataConvert -> mapper.map(listDataConvert, PulsarDto.class))
+ 					.collect(Collectors.toList());
+ 			return Response.status(Response.Status.CREATED).entity(idDto).build();
+ 		}
+	}
 		
 
 	public Response delete(Long id) {

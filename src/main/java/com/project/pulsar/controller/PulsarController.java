@@ -57,6 +57,15 @@ public class PulsarController {
 	public Response findName(@QueryParam("nome")String nome) {
 		return service.findByName(nome);
 	}
+	
+	@Operation(
+	summary = "Listando pulsar por nome",
+	description = "Obtendo pulsar por nome de identificação")
+	@GET
+	@Path("costelacao")
+	public Response findConstelacaoBase(@QueryParam("find")String costelacao) {
+		return service.findByConstelacao(costelacao);
+	}
 
 	@Operation(
 	summary = "Listando todos os pulsare.",
