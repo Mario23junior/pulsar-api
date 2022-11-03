@@ -15,7 +15,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 	    }, 
 	    info = @Info(
 	        title = "API Pulsar", 
-	        version = "1.0.0", 
+	        version = "1.0.0",
 	        contact = @Contact(
 	            name = "Pulsar é uma estrela de nêutrons que, em virtude de seu intenso campo magnético, transforma a energia rotacional em energia eletromagnética."
 	            		+ " A medida que o pulsar gira, seu intenso campo magnético induz um enorme campo elétrico na sua superfície.", //

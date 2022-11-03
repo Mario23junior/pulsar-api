@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -37,7 +38,33 @@ public class PulsarController {
 	@Transactional
 	public Response save(PulsarDto pulsarDto) {
 		return service.save(pulsarDto);
-
+	}
+	
+	@Operation(
+	summary = "Listando pulsar por id",
+    description = "Obtendo pulsar por id de identificação")
+	@GET
+	@Path("{id}")
+ 	public Response findId(@PathParam("id") Long id) {
+		return service.findByIdPulsar(id);
+	}
+	
+	@Operation(
+	summary = "Listando pulsar por nome",
+	description = "Obtendo pulsar por nome de identificação")
+	@GET
+	@Path("nome")
+	public Response findName(@QueryParam("nome")String nome) {
+		return service.findByName(nome);
+	}
+	
+	@Operation(
+	summary = "Listando pulsar por nome",
+	description = "Obtendo pulsar por nome de identificação")
+	@GET
+	@Path("costelacao")
+	public Response findConstelacaoBase(@QueryParam("find")String costelacao) {
+		return service.findByConstelacao(costelacao);
 	}
 
 	@Operation(

@@ -1,5 +1,6 @@
 package com.project.pulsar.mapperException;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -9,10 +10,11 @@ import javax.ws.rs.ext.Provider;
 import com.project.pulsar.modelErro.ModelErroReturn;
 
 @Provider
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class GenerateException implements ExceptionMapper<Exception> {
 
 	@Override
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response toResponse(Exception e) {
 
 		ModelErroReturn modelErroResponse = new ModelErroReturn();
