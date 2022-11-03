@@ -83,7 +83,7 @@ public class PulsarService {
  	}
 	
 	public Response findByName(String nome) {
-		PanacheQuery<Pulsar> listId = repository.find("nome",nome);
+		PanacheQuery<Pulsar> listId = repository.find("nome",nome.toUpperCase().toLowerCase());
 		if(listId.equals(null)) {
 			Response.status(Response.Status.NO_CONTENT).build();
 			throw new ExceptionsRepeatedValuesReturn("O pulsar "+ nome
