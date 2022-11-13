@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "86e56ba9-6458-40fd-8f98-5a9f9cd3f461",
+		"name": "Pusares",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10455541"
+	},
+	"item": [
+		{
+			"name": "Criando um novo regsitro de pulsar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"teste\",\n    \"imgSimulacao\": \"reste\",\n    \"nomeConstelacao\": \"wdfwd\",\n    \"ascReta\": \"wewec\",\n    \"distancia\": 32.22\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/project/pulsar/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"project",
+						"pulsar",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listando todos os valores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/project/pulsar/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"project",
+						"pulsar",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletando pulsares por id de identificação",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/project/pulsar/23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"project",
+						"pulsar",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizando informações de pulsares",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\n        \"ascReta\": \"07h  37m  51,25 s\",\n        \"distancia\": 3200.0,\n        \"id\": 18,\n        \"imgSimulacao\": \"https://astronomy.com/-/media/Images/Columnists/Jeff%20Hester/2016/07/binary_pulsar_system.jpg\",\n        \"nome\": \"PSR J0737-3039\",\n        \"nomeConstelacao\": \"Puppis - teste\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/project/pulsar/18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"project",
+						"pulsar",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listando quansares por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/project/pulsar/18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"project",
+						"pulsar",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listando pulsares por nomes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/project/pulsar/nome?nome=PSR J0737-3039",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"project",
+						"pulsar",
+						"nome"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "PSR J0737-3039"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listando pulsar por costelações",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/project/pulsar/costelacao?find=Aquila",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"project",
+						"pulsar",
+						"costelacao"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "Puppis",
+							"disabled": true
+						},
+						{
+							"key": "find",
+							"value": "Aquila"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
